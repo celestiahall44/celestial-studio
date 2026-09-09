@@ -6,6 +6,7 @@
   --muted: #5f5a53;
   --accent: #c2ab8f;
   --accent-strong: #8f7658;
+  --quote-border: #8f7658;
   --card: #fff8ef;
   --line: #d4c4af;
   --night: #1f2025;
@@ -56,7 +57,9 @@
 .hero-overlay-right {
   right: 0;
   width: 70%;
-  background: #ffffff url('./assets/standout-experiences.png') center/92% 108% no-repeat;
+  background-color: #ffffff;
+  background-size: 92% 108%;
+  background-repeat: no-repeat;
 }
 
 .top-nav {
@@ -173,6 +176,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 0.8rem;
 }
 
@@ -217,6 +221,7 @@ h1 {
   font-weight: 50;
   color: #ffffff;
   font-family: 'Manrope', sans-serif;
+  text-align: center;
 }
 
 main {
@@ -229,15 +234,58 @@ main {
   margin-top: clamp(2.8rem, 7vw, 5rem);
 }
 
+.values-section {
+  width: 70%;
+  margin-left: clamp(1.2rem, 2.8vw, 2.8rem);
+  margin-right: auto;
+  min-height: 34rem;
+  padding: clamp(1.6rem, 4vw, 2.8rem);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.values-eyebrow {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 50;
+  color: #ffffff;
+  font-family: 'Manrope', sans-serif;
+}
+
+.services-eyebrow {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 50;
+  font-family: 'Manrope', sans-serif;
+  color: #000000;
+}
+
+@media (max-width: 900px) {
+  .values-section {
+    width: 100%;
+    margin-left: 0;
+    min-height: auto;
+  }
+
+  .section-texture-light {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    min-height: auto;
+  }
+}
+
 .quote-band {
-  margin-top: clamp(1.4rem, 4vw, 2.6rem);
+  margin-top: clamp(2.8rem, 7vw, 5rem);
 }
 
 .quote-card {
   margin: 0;
   padding: clamp(1.4rem, 4vw, 2.2rem);
   background: linear-gradient(145deg, #fdf7ef, #f8ecde);
-  border-left: 4px solid var(--accent-strong);
+  border-left: 3px solid var(--quote-border);
+  border-top: none;
 }
 
 .quote-text {
@@ -249,77 +297,85 @@ main {
   line-height: 1.45;
 }
 
+.quote-band-alt {
+  width: 100%;
+  background: #c7cec6;
+  padding: clamp(1rem, 2.5vw, 1.6rem);
+}
+
+.quote-band-tan {
+  background: linear-gradient(180deg, #a39d95 0%, #73747a 50%, #3f434a 100%);
+}
+
+.quote-band-tan .quote-card-alt {
+  background: rgba(239, 236, 231, 0.78);
+  border-left: 3px solid #555b63;
+  border-top: none;
+}
+
+.quote-card-alt {
+  display: flex;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.62);
+  border-left: none;
+  border-top: 3px solid var(--quote-border);
+  padding: clamp(1.2rem, 3vw, 1.9rem);
+}
+
+.quote-text-alt {
+  max-width: 56ch;
+  margin: 0;
+  color: var(--ink);
+  text-align: left;
+}
+
+.quote-band-secondary .quote-text-alt {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.quote-band-secondary-warm {
+  background: linear-gradient(180deg, #dfd6ca 0%, #c7b7a4 50%, #a9927b 100%);
+}
+
+.quote-band-secondary-warm .quote-card-alt {
+  background: rgba(249, 243, 236, 0.8);
+  border-top-color: #8f765b;
+}
+
+.quote-band-right .quote-card-alt {
+  justify-content: flex-end;
+  border-top: none;
+  border-right: 3px solid var(--quote-border);
+}
+
+.quote-band-right {
+  background: linear-gradient(180deg, #d0c7bd 0%, #a39484 48%, #5f5750 100%);
+}
+
+.quote-band-right .quote-card-alt {
+  background: rgba(248, 241, 234, 0.8);
+  border-right-color: #85715d;
+}
+
+.quote-band-right .quote-text-alt {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+
 .section-heading h2 {
   margin: 0.8rem 0 0;
   font-size: clamp(1.45rem, 4vw, 2.4rem);
   max-width: 26ch;
 }
 
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+#services .section-heading {
+  text-align: right;
 }
 
-.project-card {
-  background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(249, 239, 227, 0.96));
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  padding: 1.1rem;
-  box-shadow: 0 8px 24px rgba(49, 44, 39, 0.07);
-  transform: translateY(12px);
-  opacity: 0;
-  animation: riseIn 600ms ease forwards;
-  transition: transform 200ms ease, box-shadow 200ms ease;
-}
-
-.project-card:nth-child(2) {
-  animation-delay: 130ms;
-}
-
-.project-card:nth-child(3) {
-  animation-delay: 260ms;
-}
-
-.project-card h3 {
-  margin: 0.35rem 0 0.5rem;
-  font-size: 1.15rem;
-}
-
-.project-image {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  border-radius: 0.8rem;
-  border: 1px solid #d5c3ad;
-  margin-bottom: 0.85rem;
-  background: #f3e6d8;
-  box-shadow: 0 8px 16px rgba(58, 50, 44, 0.14);
-}
-
-.project-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 28px rgba(49, 44, 39, 0.11);
-}
-
-.project-card:hover .project-image {
-  box-shadow: 0 14px 22px rgba(58, 50, 44, 0.14);
-}
-
-.project-card p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.45;
-  font-family: 'Manrope', sans-serif;
-}
-
-.project-category {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--accent-strong);
-  font-weight: 700;
+#services .section-heading h1 {
+  margin-left: auto;
 }
 
 .service-list {
@@ -331,19 +387,23 @@ main {
 }
 
 .section-texture-light {
-  position: relative;
-  padding: clamp(1rem, 3vw, 1.8rem);
-  border-radius: 1.1rem;
+  width: 70%;
+  margin-left: auto;
+  margin-right: clamp(1.2rem, 2.8vw, 2.8rem);
+  min-height: 34rem;
+  padding: clamp(1.6rem, 4vw, 2.8rem);
   background:
-    linear-gradient(140deg, rgba(255, 247, 235, 0.82), rgba(251, 242, 231, 0.78)),
-    url('./assets/feathers.png') center/cover no-repeat;
-  border: 1px solid rgba(212, 195, 172, 0.6);
+    linear-gradient(140deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.14)),
+    url('./assets/GreenLeaf.png') center/cover no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .service-list li {
   background: #fbf6ef;
   border: 1px solid var(--line);
-  border-radius: 0.8rem;
+  border-radius: 0;
   padding: 0.9rem 1rem;
   font-weight: 500;
   font-family: 'Manrope', sans-serif;
@@ -368,12 +428,36 @@ main {
 .process-grid {
   margin-top: 1.4rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
+  justify-items: start;
   gap: 1rem;
 }
 
+#services .process-grid {
+  justify-items: center;
+}
+
+#services .process-card {
+  width: fit-content;
+  max-width: min(100%, 34rem);
+  padding: 0.82rem 0.95rem;
+}
+
+#services .process-card p {
+  font-size: 1.08rem;
+}
+
+#services .service-number {
+  display: inline-block;
+  min-width: 2ch;
+  margin-right: 0.55rem;
+  font-weight: 700;
+  color: var(--accent-strong);
+}
+
 .process-card {
-  background: #fff9f1;
+  width: min(100%, 40rem);
+  background: rgba(255, 249, 241, 0.72);
   border: 1px solid var(--line);
   border-radius: 0.95rem;
   padding: 1.1rem;
@@ -393,10 +477,11 @@ main {
 .contact {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(130deg, #3b3c45 0%, #2f3037 45%, #24242a 100%);
+  background: #2f3037;
   color: #f6efe4;
-  border-radius: 1rem;
-  padding: clamp(1.1rem, 4vw, 2rem);
+  border-radius: 0;
+  min-height: 28rem;
+  padding: clamp(1.6rem, 5vw, 3rem);
   border: 1px solid rgba(201, 184, 164, 0.28);
   box-shadow: 0 22px 36px rgba(35, 33, 42, 0.24);
 }
@@ -405,9 +490,9 @@ main {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(120deg, rgba(11, 11, 14, 0.68), rgba(26, 26, 31, 0.62)),
-    url('./assets/lets-create-something.png') center/cover no-repeat;
-  opacity: 0.36;
+    linear-gradient(120deg, rgba(11, 11, 14, 0.3), rgba(26, 26, 31, 0.24)),
+    url('./assets/lets-create-something.png') center 8%/cover no-repeat;
+  opacity: 1;
   z-index: 0;
 }
 
@@ -416,16 +501,27 @@ main {
   z-index: 1;
 }
 
-.contact h2 {
-  margin: 0.8rem 0;
+.contact h1 {
+  margin: 11rem 0 0;
   max-width: 28ch;
+  color: #e4d2b8;
 }
 
 .contact p {
-  margin: 0;
-  color: #dfd4c3;
-  max-width: 58ch;
+  margin: 1rem 0 0;
+  font-size: 22px;
+  font-weight: 50;
+  color: #ffffff;
+  max-width: 50ch;
   font-family: 'Manrope', sans-serif;
+}
+
+.contact .primary-cta {
+  display: block;
+  width: fit-content;
+  margin-top: 1.2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact-links {

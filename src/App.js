@@ -1,40 +1,9 @@
 import './App.css';
-import standoutTexture from './assets/standout-experiences.png';
-import featherTexture from './assets/feathers.png';
-import neutralTexture from './assets/neutral.png';
 
 function App() {
-  const featuredProjects = [
-    {
-      title: 'Nebula Commerce',
-      category: 'E-commerce Platform',
-      image: standoutTexture,
-      imageAlt: 'Textured dark brand background with script typography',
-      description:
-        'A conversion-focused storefront with custom CMS blocks, lightning-fast product filtering, and analytics dashboards.',
-    },
-    {
-      title: 'Luna Wellness',
-      category: 'Brand Website',
-      image: featherTexture,
-      imageAlt: 'Soft neutral feather texture with warm cream tones',
-      description:
-        'A mobile-first marketing site with immersive visuals, animated storytelling, and SEO-driven content architecture.',
-    },
-    {
-      title: 'Orbit SaaS Suite',
-      category: 'Product Interface',
-      image: neutralTexture,
-      imageAlt: 'Natural wood texture in warm neutral palette',
-      description:
-        'A scalable React front-end for a B2B platform with role-based dashboards, reusable design patterns, and onboarding flows.',
-    },
-  ];
-
   const services = [
     'Custom Website Design and Development',
     'React Front-end Architecture',
-    'Performance Optimization and Core Web Vitals',
     'Landing Pages for Campaigns and Product Launches',
     'Website Maintenance and Iterative Improvements',
   ];
@@ -57,6 +26,7 @@ function App() {
     },
   ];
 
+
   return (
     <div className="site-shell">
       <header className="hero" id="top">
@@ -67,7 +37,7 @@ function App() {
             alt="Celestial Studio LLC"
           />
           <div className="nav-links">
-            <a href="#work">About</a>
+            <a href="#work">Values</a>
             <a href="#services">Services</a>
             <a href="#contact">Contact</a>
           </div>
@@ -75,7 +45,11 @@ function App() {
 
         <div className="hero-body">
           <div className="hero-overlay hero-overlay-left" aria-hidden="true" />
-          <div className="hero-overlay hero-overlay-right" aria-hidden="true" />
+          <div
+            className="hero-overlay hero-overlay-right"
+            style={{ backgroundImage: "url('/Standout Experiences.png')" }}
+            aria-hidden="true"
+          />
 
           <div
             className="hero-left-feature"
@@ -88,15 +62,15 @@ function App() {
               Beautiful, strategic websites designed to elevate your brand.
             </h1>
             <p className="hero-copy">
-              I create custom web experiences that combine clean code, modern
-              interaction design, and storytelling aligned with your vision.
+              I create custom web experiences that combine clean code,
+              <br />
+              modern interaction design, and storytelling
+              <br />
+              aligned with your vision.
             </p>
             <div className="hero-actions">
               <a className="primary-cta" href="#contact">
                 Start a Project
-              </a>
-              <a className="secondary-cta" href="#work">
-                View My Work
               </a>
             </div>
             <p className="micro-note">
@@ -107,56 +81,27 @@ function App() {
       </header>
 
       <main>
-        <section className="section quote-band" aria-label="Studio philosophy">
-          <blockquote className="quote-card">
-            <p className="quote-text">
-              Listening closely to each client&apos;s wishes is at the center of
-              my process, because the strongest websites come from real
-              collaboration and a genuine commitment to ultimate satisfaction.
+        <section className="section quote-band quote-band-alt quote-band-tan" aria-label="Studio philosophy">
+          <blockquote className="quote-card quote-card-alt">
+            <p className="quote-text quote-text-alt">
+              Listening closely to each client's wishes is at the center of
+              my process, 
+              <br />
+              because the strongest websites come from real
+              collaboration and a genuine 
+              <br />
+              commitment to ultimate satisfaction.
             </p>
           </blockquote>
         </section>
 
-        <section className="section" id="work">
+        <section
+          className="section values-section"
+          id="work"
+          style={{ backgroundImage: "url('/Neutral.png')" }}
+        >
           <div className="section-heading">
-            <p className="eyebrow">Featured Work</p>
-            <h2>Recent projects crafted with clarity, elegance, and results.</h2>
-          </div>
-          <div className="project-grid">
-            {featuredProjects.map((project) => (
-              <article className="project-card" key={project.title}>
-                <img
-                  className="project-image"
-                  src={project.image}
-                  alt={project.imageAlt}
-                />
-                <p className="project-category">{project.category}</p>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section section-texture-light" id="services">
-          <div className="section-heading">
-            <p className="eyebrow">Services</p>
-            <h2>Services tailored for founders and brands ready to stand out.</h2>
-          </div>
-          <ul className="service-list">
-            {services.map((service, index) => (
-              <li key={service}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <p>{service}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="section" id="process">
-          <div className="section-heading">
-            <p className="eyebrow">Process</p>
-            <h2>A collaborative flow that keeps quality high and timelines clear.</h2>
+            <h1>The principles that guide every client project I build.</h1>
           </div>
           <div className="process-grid">
             {process.map((step) => (
@@ -168,28 +113,61 @@ function App() {
           </div>
         </section>
 
+        <section className="section quote-band quote-band-alt quote-band-secondary quote-band-secondary-warm" aria-label="Client partnership">
+          <blockquote className="quote-card quote-card-alt">
+            <p className="quote-text quote-text-alt">
+              Every successful project begins with trust and clear communication.
+              <br />
+              I prioritize listening first, aligning with your vision, and
+              delivering work 
+              <br />
+              that feels deeply personalized to your goals.
+            </p>
+          </blockquote>
+        </section>
+
+        <section className="section section-texture-light" id="services">
+          <div className="section-heading">
+            <h1>Services tailored for founders and brands ready to stand out.</h1>
+          </div>
+          <div className="process-grid">
+            {services.map((service, index) => (
+              <article className="process-card" key={service}>
+                <p>
+                  <span className="service-number">{String(index + 1).padStart(2, '0')}</span>
+                  {service}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section quote-band quote-band-alt quote-band-secondary quote-band-right" aria-label="Studio promise">
+          <blockquote className="quote-card quote-card-alt">
+            <p className="quote-text quote-text-alt">
+              True satisfaction is the goal,
+              <br />
+              with results that feel aligned, personal, and lasting.
+            </p>
+          </blockquote>
+        </section>
+
         <section className="section contact" id="contact">
           <div className="contact-overlay" aria-hidden="true" />
-          <p className="eyebrow">Contact</p>
-          <h2>Let&apos;s build a web presence that feels distinctly yours.</h2>
+          <h1>Let's build a web presence that feels distinctly yours.</h1>
           <p>
-            Reach out with your timeline, goals, and current website status. I
-            typically respond within one business day.
+            Reach out with your timeline, goals, and current website status. 
+            <br />
+            I typically respond within one business day.
           </p>
-          <div className="contact-links">
-            <a href="mailto:hello@celestialstudio.dev">hello@celestialstudio.dev</a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
-            <a href="https://github.com" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-          </div>
+          <a className="primary-cta" href="mailto:hello@celestialstudio.dev">
+            Contact Me
+          </a>
         </section>
       </main>
 
       <footer className="footer">
-        <p>© {new Date().getFullYear()} Celestial Studio. Built with React.</p>
+        <p>© {new Date().getFullYear()} Celestial Studio.</p>
       </footer>
     </div>
   );
