@@ -176,7 +176,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.8rem;
 }
 
@@ -221,7 +221,7 @@ h1 {
   font-weight: 50;
   color: #ffffff;
   font-family: 'Manrope', sans-serif;
-  text-align: center;
+  text-align: left;
 }
 
 main {
@@ -434,7 +434,7 @@ main {
 }
 
 #services .process-grid {
-  justify-items: center;
+  justify-items: end;
 }
 
 #services .process-card {
@@ -522,6 +522,114 @@ main {
   margin-top: 1.2rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(20, 19, 23, 0.62);
+}
+
+.contact-modal {
+  width: min(92vw, 38rem);
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.6) 0%, rgba(248, 248, 248, 0.52) 100%),
+    url('./assets/feathers.png') center/cover no-repeat;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0 24px 44px rgba(22, 22, 22, 0.2);
+  padding: clamp(1.2rem, 3vw, 2rem);
+}
+
+.contact-modal h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: #202124;
+  max-width: 22ch;
+}
+
+.contact-modal p {
+  margin: 0.9rem 0 0;
+  color: #44474d;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.contact-form {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.contact-form label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #35383d;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid #c7ccd1;
+  background: #ffffff;
+  color: #202124;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.98rem;
+  padding: 0.65rem 0.72rem;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 7.2rem;
+}
+
+.contact-modal .primary-cta {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1rem;
+}
+
+.contact-modal .primary-cta[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.modal-status {
+  margin: 0.35rem 0 0;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.modal-status-success {
+  color: #2f6d49;
+}
+
+.modal-status-error {
+  color: #8b3e3e;
+}
+
+.modal-close {
+  display: block;
+  margin-top: 0.75rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #555b63;
+  font-weight: 600;
+  font-family: 'Manrope', sans-serif;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #2a2f35;
 }
 
 .contact-links {

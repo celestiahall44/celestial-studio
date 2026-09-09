@@ -1,6 +1,99 @@
+import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import './App.css';
 
 function App() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isSubmittingForm, setIsSubmittingForm] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const openContactModal = (event) => {
+    event.preventDefault();
+    setSubmitStatus(null);
+    setIsContactModalOpen(true);
+  };
+
+  const closeContactModal = () => {
+    setSubmitStatus(null);
+    setIsContactModalOpen(false);
+  };
+
+  const handleModalBackdropClick = (event) => {
+    if (event.target === event.currentTarget) {
+      closeContactModal();
+    }
+  };
+
+  const handleContactFormSubmit = async (event) => {
+    event.preventDefault();
+    setSubmitStatus(null);
+    const form = event.currentTarget;
+
+    let serviceId = 'service_e0g0bsp';
+    let templateId = 'template_zqf6t3r';
+    let publicKey = 'PunT1yUjK2-xsBH1z';
+
+    try {
+      serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || serviceId;
+      templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || templateId;
+      publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || publicKey;
+    } catch (error) {
+      // Fall back to the defaults above when env access is unavailable.
+    }
+
+    if (!serviceId || !templateId || !publicKey) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Unable to send at this time. Please contact (406) 214-7059',
+      });
+      return;
+    }
+
+    const formData = new FormData(form);
+    const name = String(formData.get('name') || '').trim();
+    const phone = String(formData.get('phone') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const details = String(formData.get('details') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+
+    setIsSubmittingForm(true);
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name,
+          details,
+          phone,
+          email,
+          message,
+          to_email: 'celestial.studio406@gmail.com',
+          from_name: name,
+          from_email: email,
+          reply_to: email,
+        },
+        {
+          publicKey,
+        }
+      );
+
+      form.reset();
+      setSubmitStatus({
+        type: 'success',
+        message: 'Your inquiry was sent successfully! We will be in touch soon!',
+      });
+    } catch (error) {
+      console.error('EmailJS send failed:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Unable to send at this time. Please contact (406) 214-7059',
+      });
+    } finally {
+      setIsSubmittingForm(false);
+    }
+  };
+
   const services = [
     'Custom Website Design and Development',
     'React Front-end Architecture',
@@ -69,7 +162,7 @@ function App() {
               aligned with your vision.
             </p>
             <div className="hero-actions">
-              <a className="primary-cta" href="#contact">
+              <a className="primary-cta" href="#contact-modal" onClick={openContactModal}>
                 Start a Project
               </a>
             </div>
@@ -160,11 +253,52 @@ function App() {
             <br />
             I typically respond within one business day.
           </p>
-          <a className="primary-cta" href="mailto:hello@celestialstudio.dev">
+          <a className="primary-cta" href="#contact-modal" onClick={openContactModal}>
             Contact Me
           </a>
         </section>
       </main>
+
+      {isContactModalOpen && (
+        <div className="modal-backdrop" role="presentation" onClick={handleModalBackdropClick}>
+          <section className="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+            <h2 id="contact-modal-title">Let&apos;s Start Your Project</h2>
+            <p>
+              Share your goals, timeline, and what you want your website to accomplish.
+              I&apos;ll follow up with next steps and a clear plan.
+            </p>
+            <form className="contact-form" onSubmit={handleContactFormSubmit}>
+              <label htmlFor="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" required />
+
+              <label htmlFor="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" required />
+
+              <label htmlFor="contact-phone">Phone</label>
+              <input id="contact-phone" name="phone" type="tel" required />
+
+              <label htmlFor="contact-details">Project Details</label>
+              <input id="contact-details" name="details" type="text" required />
+
+              <label htmlFor="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows={5} required />
+
+              <button type="submit" className="primary-cta" disabled={isSubmittingForm}>
+                {isSubmittingForm ? 'Sending...' : 'Send Inquiry'}
+              </button>
+
+              {submitStatus && (
+                <p className={`modal-status modal-status-${submitStatus.type}`}>
+                  {submitStatus.message}
+                </p>
+              )}
+            </form>
+            <button type="button" className="modal-close" onClick={closeContactModal}>
+              Close
+            </button>
+          </section>
+        </div>
+      )}
 
       <footer className="footer">
         <p>© {new Date().getFullYear()} Celestial Studio.</p>
