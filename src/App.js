@@ -265,7 +265,7 @@ function App() {
             <button type="button" className="modal-close-x" onClick={closeContactModal} aria-label="Close modal">
               X
             </button>
-            <h2 id="contact-modal-title">Let''s Start Your Project</h2>
+            <h2 id="contact-modal-title">Let's Start Your Project</h2>
             <p>
               Share your goals, timeline, and what you want your website to accomplish.
               I'll follow up with next steps and a clear plan.
