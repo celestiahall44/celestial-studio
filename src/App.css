@@ -535,6 +535,7 @@ main {
 }
 
 .contact-modal {
+  position: relative;
   width: min(92vw, 38rem);
   background:
     linear-gradient(155deg, rgba(255, 255, 255, 0.6) 0%, rgba(248, 248, 248, 0.52) 100%),
@@ -630,6 +631,25 @@ main {
 
 .modal-close:hover {
   color: #2a2f35;
+}
+
+.modal-close-x {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.8rem;
+  border: none;
+  background: none;
+  padding: 0.1rem;
+  color: #2a2f35;
+  font-family: 'Manrope', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-close-x:hover {
+  color: #121418;
 }
 
 .contact-links {

@@ -262,10 +262,13 @@ function App() {
       {isContactModalOpen && (
         <div className="modal-backdrop" role="presentation" onClick={handleModalBackdropClick}>
           <section className="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
-            <h2 id="contact-modal-title">Let&apos;s Start Your Project</h2>
+            <button type="button" className="modal-close-x" onClick={closeContactModal} aria-label="Close modal">
+              X
+            </button>
+            <h2 id="contact-modal-title">Let''s Start Your Project</h2>
             <p>
               Share your goals, timeline, and what you want your website to accomplish.
-              I&apos;ll follow up with next steps and a clear plan.
+              I'll follow up with next steps and a clear plan.
             </p>
             <form className="contact-form" onSubmit={handleContactFormSubmit}>
               <label htmlFor="contact-name">Name</label>
@@ -293,9 +296,6 @@ function App() {
                 </p>
               )}
             </form>
-            <button type="button" className="modal-close" onClick={closeContactModal}>
-              Close
-            </button>
           </section>
         </div>
       )}
