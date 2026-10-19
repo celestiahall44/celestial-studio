@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "celestialstudiollc.com"
+        }
+      ],
+      "destination": "https://www.celestialstudiollc.com/:path*",
+      "permanent": true
+    }
+  ]
+}
