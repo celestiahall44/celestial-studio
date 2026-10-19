@@ -276,7 +276,7 @@ function App() {
     <div className="site-shell">
       <header className="top-bar">
         <a
-          href="#"
+          href="#top"
           aria-label="Back to top"
           onClick={(event) => {
             handleNavLinkClick(event);
